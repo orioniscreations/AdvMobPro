@@ -37,3 +37,9 @@ A reattempt at an old concept with the knowledge I have now of a dedicated threa
   <li>Changed mind and removed login, decided to set up for people to enter character name instead of username</li>
   <li>How Mongo do?</li>
   </ul>
+  
+  <h3>October 21, 2020</h3>
+  <ul>
+  <li>Debugging</li>
+  <li>Fought with JQuery</li>
+  </ul>
