@@ -11,6 +11,9 @@
                 integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
                 crossorigin="anonymous">
 
+        <!-- Socket IO -->
+        <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+
         <link rel="stylesheet" href="index.css">
 
         <title>Threader</title>
@@ -43,9 +46,7 @@
         NOTE: Why is this showing up but not my div?
 
         <div class="adBox">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti et rerum iure nesciunt debitis
-                nobis dicta id ex ipsam, autem ea sed numquam maxime voluptates ipsum nihil explicabo quo
-                voluptatem.
+                <img src="/img/banner2.jpg" alt="">
         </div>
 
         <div class="container">
@@ -62,44 +63,18 @@
                         <br>
                         <input type="submit" id="send" class="btn btn-success" value="Send">
                 </div>
+
+                <!-- Show messages: WHY IS IT NOT SHOWING MESSAGES? -->
+                <p>NOTE: Messages are supposed to show up here but are not? Assuming it's the damn Mongo connection</p>
                 <div id="messages">
 
                 </div>
         </div>
 
 
-        <script>
-                var socket = io();
-                $(() => {
-                        $("#send").click(() => {
-                                sendMessage({ name: $("#name").val(), message: $("#message").val() });
-                        })
 
-                        getMessages()
-                })
-
-                socket.on('message', addMessages)
-
-                function addMessages(message) {
-                        $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
-                }
-
-                function getMessages() {
-                        $.get('http://localhost:3000/messages', (data) => {
-                                data.forEach(addMessages);
-                        })
-                }
-
-                function sendMessage(message) {
-                        $.post('http://localhost:3000/messages', message)
-                }
-        </script>
-
-
-
-        <!-- Socket IO -->
-        <script src=”/js/socket.io.js”></script>
-        <!-- Optional JavaScript -->
+        <!-- JavaScript -->
+        <script src="/index.js"></script>
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

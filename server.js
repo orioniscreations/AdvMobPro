@@ -14,7 +14,7 @@ var Message = mongoose.model('Message', {
         message: String
 })
 
-// I CAN"T FIND THE BLOODY URL. GET HELP IN MORNING???
+// I CAN"T FIND THE BLOODY URL. SEND HELP
 var dbUrl = ''
 
 app.get('/messages', (req, res) => {
