@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+                crossorigin="anonymous">
+
+        <link rel="stylesheet" href="index.css">
+
+        <title>Threader</title>
+</head>
+
+<body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Threader</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="#">My Threads</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="#">Pricing</a>
+                                </li>
+
+                        </ul>
+                </div>
+        </nav>
+
+        NOTE: Why is this showing up but not my div?
+
+        <div class="adBox">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti et rerum iure nesciunt debitis
+                nobis dicta id ex ipsam, autem ea sed numquam maxime voluptates ipsum nihil explicabo quo
+                voluptatem.
+        </div>
+
+        <div class="container">
+                <br>
+                <div class="">
+                        <h1 class="display-4">Send Message</h1>
+                        <br>
+                        <input id="name" class="form-control" placeholder="Name">
+                        <br>
+                        <input type="file"> Reaction Icon
+                        <br>
+                        <textarea id="message" class="form-control" placeholder="Your Reply Here">
+                        </textarea>
+                        <br>
+                        <input type="submit" id="send" class="btn btn-success" value="Send">
+                </div>
+                <div id="messages">
+
+                </div>
+        </div>
+
+
+        <script>
+                var socket = io();
+                $(() => {
+                        $("#send").click(() => {
+                                sendMessage({ name: $("#name").val(), message: $("#message").val() });
+                        })
+
+                        getMessages()
+                })
+
+                socket.on('message', addMessages)
+
+                function addMessages(message) {
+                        $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
+                }
+
+                function getMessages() {
+                        $.get('http://localhost:3000/messages', (data) => {
+                                data.forEach(addMessages);
+                        })
+                }
+
+                function sendMessage(message) {
+                        $.post('http://localhost:3000/messages', message)
+                }
+        </script>
+
+
+
+        <!-- Socket IO -->
+        <script src=”/js/socket.io.js”></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous"></script>
+</body>
+
+</html>
