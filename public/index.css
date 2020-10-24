@@ -1,0 +1,13 @@
+#graphicBox {
+        width: 100%;
+        min-height: 500px;
+        background-image: url(/img/banner2.jpg);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+}
+
+#footerCSS {
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+}

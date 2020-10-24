@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+                crossorigin="anonymous">
+
+        <!-- Socket IO -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js"
+                integrity="sha512-AcZyhRP/tbAEsXCCGlziPun5iFvcSUpEz2jKkx0blkYKbxU81F+iq8FURwPn1sYFeksJ+sDDrI5XujsqSobWdQ=="
+                crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="index.css">
+
+        <title>Threader</title>
+</head>
+
+<body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Threader</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="#">RP Rooms</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="#">My Threads</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="#">News</a>
+                                </li>
+
+
+                        </ul>
+                </div>
+        </nav>
+
+
+
+        <div class="graphicBox">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus iusto, architecto corporis veniam
+                quibusdam qui perferendis asperiores impedit pariatur praesentium laboriosam et quasi ad tempora harum
+                doloremque quo accusantium laudantium?
+        </div>
+
+        <div class="container">
+                <br>
+                <div class="">
+                        <h1 class="display-4">Send Message</h1>
+                        <br>
+                        <input id="name" class="form-control" placeholder="Name">
+                        <br>
+                        <label for="icon">Reaction Icon:</label>
+                        <!-- onchange="readURL(this);" -->
+                        <input type='file' id="icon" />
+                        <br>
+                        <textarea id="message" class="form-control" placeholder="Your Reply Here">
+                        </textarea>
+                        <br>
+                        <input type="submit" id="send" class="btn btn-success" value="Send">
+                </div>
+
+
+                <div id="messages">
+
+                </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer font-small blue pt-4" id="footerCSS">
+
+                <!-- Footer Links -->
+                <div class="container-fluid text-center text-md-left">
+
+                        <!-- Grid row -->
+                        <div class="row">
+
+                                <!-- Grid column -->
+                                <div class="col-md-6 mt-md-0 mt-3">
+
+                                        <!-- Content -->
+                                        <h5 class="text-uppercase">Threader</h5>
+                                        <p>A dedicated, instant Roleplay chat</p>
+
+
+                                </div>
+                                <!-- Grid column -->
+
+                                <hr class="clearfix w-100 d-md-none pb-3">
+
+                                <!-- Grid column -->
+                                <div class="col-md-3 mb-md-0 mb-3">
+
+                                        <!-- Links -->
+                                        <h5 class="text-uppercase">Sitemap</h5>
+
+                                        <ul class="list-unstyled">
+                                                <li>
+                                                        <a href="#!">Home</a>
+                                                </li>
+                                                <li>
+                                                        <a href="#!">RP Rooms</a>
+                                                </li>
+                                                <li>
+                                                        <a href="#!">My Threads</a>
+                                                </li>
+
+
+                                        </ul>
+
+                                </div>
+                                <!-- Grid column -->
+
+                                <!-- Grid column -->
+                                <div class="col-md-3 mb-md-0 mb-3">
+
+                                        <!-- Links -->
+                                        <h5 class="text-uppercase">Other</h5>
+
+                                        <ul class="list-unstyled">
+                                                <li>
+                                                        <a href="#!">News</a>
+                                                </li>
+                                                <li>
+                                                        <a href="#!">About</a>
+                                                </li>
+                                                <li>
+                                                        <a href="#!">Contact</a>
+                                                </li>
+
+                                        </ul>
+
+                                </div>
+                                <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row -->
+
+                </div>
+                <!-- Footer Links -->
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center py-3">© 2020 Copyright:
+                        Orionis Creations, Mobile Web Development
+                </div>
+                <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
+
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous"></script>
+
+        <!-- JavaScript -->
+        <script src="/js/index.js"></script>
+</body>
+
+</html>

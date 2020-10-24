@@ -5,17 +5,20 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var mongoose = require('mongoose');
 
-app.use(express.static(__dirname));
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({
+        extended: false
+}))
 
 var Message = mongoose.model('Message', {
         name: String,
+        icon: String,
         message: String
 })
 
-// I CAN"T FIND THE BLOODY URL. SEND HELP
-var dbUrl = ''
+
+var dbUrl = 'mongodb+srv://orionis:<password>@cluster0.1yzy7.mongodb.net/<dbname>?retryWrites=true&w=majority'
 
 app.get('/messages', (req, res) => {
         Message.find({}, (err, messages) => {
@@ -26,7 +29,9 @@ app.get('/messages', (req, res) => {
 
 app.get('/messages/:user', (req, res) => {
         var user = req.params.user
-        Message.find({ name: user }, (err, messages) => {
+        Message.find({
+                name: user
+        }, (err, messages) => {
                 res.send(messages);
         })
 })
@@ -39,30 +44,40 @@ app.post('/messages', async (req, res) => {
                 var savedMessage = await message.save()
                 console.log('saved');
 
-                var censored = await Message.findOne({ message: 'badword' });
+                var censored = await Message.findOne({
+                        message: 'badword'
+                });
                 if (censored)
-                        await Message.remove({ _id: censored.id })
+                        await Message.remove({
+                                _id: censored.id
+                        })
                 else
                         io.emit('message', req.body);
                 res.sendStatus(200);
-        }
-        catch (error) {
+        } catch (error) {
                 res.sendStatus(500);
                 return console.log('error', error);
-        }
-        finally {
+        } finally {
                 console.log('Message Posted')
         }
 
 })
 
+app.use(express.static("public"));
 
+io.on('connection', socket => {
+        console.log('a Mun has connected')
+        socket.on("chat msg", msg => {
 
-io.on('connection', () => {
-        console.log('a user is connected')
+                io.emit('message', msg)
+        })
 })
 
-mongoose.connect(dbUrl, { useMongoClient: true }, (err) => {
+
+
+mongoose.connect(dbUrl, {
+        useMongoClient: true
+}, (err) => {
         console.log('mongodb connected', err);
 })
 
