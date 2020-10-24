@@ -43,3 +43,23 @@ A reattempt at an old concept with the knowledge I have now of a dedicated threa
   <li>Debugging</li>
   <li>Fought with JQuery</li>
   </ul>
+  
+  <h3> October 22</h3>
+  <ul>
+  <li>Fought with socket.io</li>
+  </ul>
+
+<h3>October 23</h3>
+<ul>
+  <li>Fixed socket.io</li>
+  <li>Added Footer</li>
+  <li>Removed image at top and replaced it with the div</li>
+  <li>Added code to send images along with the name and message</li>
+  <li>Cleaned up code</li>
+  </ul>
+  
+  <h3>October 24</h3>
+  <ul>
+  <li>Changed code for images to a different method... didn't work, changed back</li>
+  <li>Fought with CSS... Why is my CSS not working?! Something about MIME?</li>
+  </ul>
